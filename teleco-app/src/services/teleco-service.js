@@ -1,9 +1,9 @@
-import http from './base-api-service'
+import https from './base-api-service'
 
 //auth
 const login = (username, password) => https.post('/react-test.apps-dev.tid.es/auth', { username, password })
 
-
+const posts = (token) => https.get('/react-test.apps-dev.tid.es/', { token }, { headers: { 'Authorization': 'Bearer' + token }})
 
 
 
@@ -11,7 +11,8 @@ const login = (username, password) => https.post('/react-test.apps-dev.tid.es/au
 
 const service = {
     login,
-    
+    posts
 }
 
 export default service
+

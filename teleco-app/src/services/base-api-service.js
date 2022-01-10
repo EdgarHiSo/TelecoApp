@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-const http = axios.create({
+const https = axios.create({
   baseURL: process.env.REACT_APP_API_BASE_URL || 'http://localhost:3001/api',
   withCredentials: true
 })
 
-http.interceptors.response.use(
+https.interceptors.response.use(
   (response) => {
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
@@ -22,4 +22,4 @@ http.interceptors.response.use(
   }
 );
 
-export default http;
+export default https;

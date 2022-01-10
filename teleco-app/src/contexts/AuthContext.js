@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from 'react'
 import service from '../services/teleco-service'
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router-dom'
 
 export const AuthContext = React.createContext()
 
 function AuthContextProvider({ children }) {
     
-    const history = useHistory()
+    const navigate = useNavigate()
 
-    function login(email, password) {
-        service.login(email, password)
+    function login(username, password) {
+        service.login(username, password)
             .then(token => {
                 localStorage.setItem('token', token)
-                history.push('/profile')
+                navigate('/profile')
             })
             .catch(err => console.error(err))
     }
 
     function logout() {
         localStorage.removeItem('token')
-        history.push('/login')
+        navigate('/login')
     }
 
     const value = {
