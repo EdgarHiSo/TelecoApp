@@ -9,9 +9,9 @@ function AuthContextProvider({ children }) {
 
     function login(username, password) {
         service.login(username, password)
-            .then(token => {
-                localStorage.setItem('token', token)
-                //navigate('/profile')
+            .then(data => {
+                localStorage.setItem('edgar_token', data["access_token"])
+                navigate('/posts')
             })
             .catch(err => console.error(err))
     }

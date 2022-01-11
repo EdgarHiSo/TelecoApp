@@ -15,7 +15,7 @@ https.interceptors.response.use(
   }, 
   (error) => {
     if (error?.response?.status === 401 && window.location.pathname !== "/login") {
-      localStorage.removeItem('token')
+      localStorage.removeItem('edgar_token')
       window.location.replace('/login')
     }
     // Any status codes that falls outside the range of 2xx cause this function to trigger
