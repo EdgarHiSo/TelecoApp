@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="mainBox">
       <Routes>
-        <Route exact path='/login' component={Login} />
+        <Route exact path='/login' element={<Login/>} />
       </Routes>
     </div>
   );
