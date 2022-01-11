@@ -39,7 +39,6 @@ function Login() {
                     <label className='form-label'>Password</label>
                     <input 
                         name='password'
-                        type='password'
                         className='form-control'
                         onChange={handleChange}
                         value={data.password}

@@ -1,8 +1,10 @@
 import axios from 'axios';
 
 const https = axios.create({
-  baseURL: process.env.REACT_APP_API_BASE_URL || 'http://localhost:3001/api',
-  withCredentials: true
+  baseURL: 'https://react-test.apps-dev.tid.es',
+  headers: {
+    "Content-Type": "application/json"
+  }
 })
 
 https.interceptors.response.use(
@@ -12,7 +14,7 @@ https.interceptors.response.use(
     return response.data;
   }, 
   (error) => {
-    if (error?.response?.status === 401 && window.location.pathname !== "/signup" && window.location.pathname !== "/login") {
+    if (error?.response?.status === 401 && window.location.pathname !== "/login") {
       localStorage.removeItem('token')
       window.location.replace('/login')
     }
