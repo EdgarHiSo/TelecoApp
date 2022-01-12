@@ -15,7 +15,8 @@ function PostList() {
         service.posts()
             .then(posts => setPosts(posts))
             .catch(console.error)
-    })
+    }, [])
+    
     if (!posts) return <></>
     return (
         <div className='m-3'>

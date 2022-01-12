@@ -18,7 +18,7 @@ function Login() {
                         setError(input, { type: 'manual', message: errors[input] })
                     })
                 } else {
-                    setError('email', { type: 'manual', message: message })
+                    setError('username', { type: 'manual', message: message })
                 }
             })
 
@@ -26,13 +26,9 @@ function Login() {
     return (
         <div id='login'>
             <div className='col mx-auto'>
-                <nav className="navbar navbar-light bg-light">
-                    <div className="container-fluid">
-                        <span className="navbar-brand mb-0 h1">Navbar</span>
-                    </div>
-                </nav>
+               
                 <form className='mt-3 mb-3' onSubmit={handleSubmit(onLoginFormSubmit)}>
-                    {errors.email && <div className="alert alert-danger">Invalid email or password</div>}
+                    {errors.username && <div className="alert alert-danger">Invalid email or password</div>}
 
                     <div className='mb-2'>
                         <label className='form-label'>Email</label>

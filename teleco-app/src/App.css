@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+#mainBox {
+  border: 11px solid black;
+}
+#root {
+  height: 100%;
+}
