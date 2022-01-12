@@ -1,4 +1,11 @@
 .card  {
     width: 18,5rem;
     display: flex;
+    align-content: center;
+    justify-content: center;
+}
+.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

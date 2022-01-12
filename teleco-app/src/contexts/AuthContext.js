@@ -2,19 +2,18 @@ import React from 'react'
 import service from '../services/teleco-service'
 import { useNavigate } from 'react-router-dom'
 export const AuthContext = React.createContext()
-
+//https://github.com/IronPTSolutions/react-contacts
 function AuthContextProvider({ children }) {
 
     const navigate = useNavigate()
 
     function login(username, password) {
-        service.login(username, password)
+        return service.login(username, password)
             .then(data => {
                 localStorage.setItem('edgar_token', data["access_token"])
                 navigate('/posts')
             })
-            .catch(err => console.error(err))
-    }
+    } 
 
     function logout() {
         localStorage.removeItem('token')

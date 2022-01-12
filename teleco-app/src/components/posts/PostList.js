@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import service from '../../services/teleco-service';
 import PostItem from './PostItem';
-
+import { useNavigate } from 'react-router-dom'
 function PostList() {
-    const [posts, setPosts] = useState()
 
+    const [posts, setPosts] = useState()
+    const navigate = useNavigate()
+
+    function handleLogOut() {
+        localStorage.removeItem('edgar_token')
+        navigate('/login')
+    }
     useEffect(() => {
         service.posts()
             .then(posts => setPosts(posts))
@@ -18,6 +24,7 @@ function PostList() {
                 <PostItem  {...post} key={post.id}/>
                 )}
             </div>
+            <button onClick={handleLogOut}>LogOut</button>
         </div>
     )
 }
