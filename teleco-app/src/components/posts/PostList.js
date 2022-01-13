@@ -5,21 +5,34 @@ import { useNavigate } from 'react-router-dom'
 function PostList() {
 
     const [posts, setPosts] = useState()
+    const [filteredPosts, setFilteredPosts] = useState()
     const navigate = useNavigate()
 
-    
     useEffect(() => {
         service.posts()
-            .then(posts => setPosts(posts))
+            .then(posts => {
+                setPosts(posts)
+                setFilteredPosts(posts)
+            })
             .catch(console.error)
     }, [])
-    
-    if (!posts) return <></>
+
+    function handleSearch(ev) {
+        setFilteredPosts(posts.filter(post => post.author.toLowerCase().includes(ev.target.value.toLowerCase())))
+        console.log(ev.target.value, filteredPosts)
+    }
+
+    if (!posts || !filteredPosts) return <>Loading....</>
     return (
-        <div className='m-3'>
+        <div >
             <div>
-                {posts?.map(post => 
-                <PostItem  {...post} key={post.id}/>
+                <form className="px-3">
+                    <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={handleSearch} />
+                </form>
+            </div>
+            <div className='m-3'>
+                {filteredPosts.map(post =>
+                    <PostItem  {...post} key={post.id} />
                 )}
             </div>
         </div>
