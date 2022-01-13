@@ -1,0 +1,10 @@
+.profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.card img {
+    display: flex;
+    justify-content: center;
+}
