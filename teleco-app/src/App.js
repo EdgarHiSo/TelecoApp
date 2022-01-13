@@ -3,6 +3,7 @@ import './App.css';
 import Login from './components/login/Login';
 import NavBar from './components/navbar/NavBar';
 import PostList from './components/posts/PostList';
+import Profile from './components/profile/Profile';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route exact path='/login' element={<Login />} />
         <Route exact path='/posts' element={<PostList />} />
+        <Route exact path='/profile' element={<Profile/>} />
       </Routes>
     </div>
   );
