@@ -12,27 +12,25 @@ function Login() {
     const onLoginFormSubmit = data => {
         auth.login(data.username, data.password)
             .catch(error => {
-                const { message, errors } = error.response?.data || error;
-                if (errors) {
-                    Object.keys(errors).forEach(input => {
-                        setError(input, { type: 'manual', message: errors[input] })
-                    })
+                if (error.response?.status === 400) {
+                    setError('username', { type: 'manual', message: 'invalid email or password' })
                 } else {
-                    setError('username', { type: 'manual', message: message })
+                    setError('login', { type: 'manual', message: 'an error ocurred ...' })
                 }
             })
-
     }
+    
     return (
         <div id='login'>
             <div className='col mx-auto'>
-               
+
                 <form className='mt-3 mb-3' onSubmit={handleSubmit(onLoginFormSubmit)}>
-                    {errors.username && <div className="alert alert-danger">Invalid email or password</div>}
+                    {errors.login && <div className="alert alert-danger">{errors.login?.message}</div>}
 
                     <div className='mb-2'>
                         <label className='form-label'>Email</label>
-                        <input type='text' className='form-control' {...register('username', { required: 'Username is required' })} />
+                        <input type='text' className={`form-control ${errors.username ? 'is-invalid' : ''} `}  {...register('username', { required: 'Username is required' })} />
+                        <div className='invalid-feedback'>{errors.username?.message} </div>
                     </div>
 
                     <div className='mb-2'>

@@ -2,7 +2,7 @@
 import './NavBar.css'
 import { useNavigate } from 'react-router-dom';
 
-function NavBar(id) {
+function NavBar() {
     function handleLogOut() {
         localStorage.removeItem('edgar_token')
         navigate('/login')

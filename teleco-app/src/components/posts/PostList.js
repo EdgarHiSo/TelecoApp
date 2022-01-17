@@ -19,7 +19,6 @@ function PostList() {
 
     function handleSearch(ev) {
         setFilteredPosts(posts.filter(post => post.author.toLowerCase().includes(ev.target.value.toLowerCase())))
-        console.log(ev.target.value, filteredPosts)
     }
 
     if (!posts || !filteredPosts) return <>Loading....</>
